@@ -1,0 +1,84 @@
+WaypointLabel < Panel
+  id: waypointEntry
+  height: 15
+  margin-left: 4
+  margin-top: 2
+  font: verdana-11px-monochrome
+  color: white
+  focusable: true
+
+MainWindow
+  size: 450 350
+  !text: tr('Waypoints')
+
+  Panel
+    id: teleportPanel
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.bottom: separator.top
+    border-color: red
+    border-width: 0
+    margin-bottom: 10
+
+    Minimap
+      id: minimapPanel
+      anchors.top: parent.top
+      anchors.left: parent.left
+      anchors.right: parent.right
+      height: 180
+
+    ScrollablePanel
+      id: locationsList
+      anchors.top: minimapPanel.bottom
+      anchors.bottom: parent.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin-top: 10
+      image-source: /images/options/2pixel-up-frame-borderimage-upside-down-dark
+      image-border: 2
+      padding-top: 2
+      padding-bottom: 2
+      layout: verticalBox
+      auto-focus: none
+      vertical-scrollbar: waypointsScrollBar
+    
+    VerticalScrollBar
+      id: waypointsScrollBar
+      anchors.top: locationsList.top
+      anchors.bottom: locationsList.bottom
+      anchors.right: locationsList.right
+      margin-top: 2
+      margin-bottom: 2
+      margin-right: 2
+      step: 22
+      pixels-scroll: true
+
+  HorizontalSeparator
+    id: separator
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-bottom: 30
+
+  Button
+    id: teleportButton
+    anchors.bottom: parent.bottom
+    anchors.right: closeButton.left
+    margin-bottom: -3
+    margin-right: 10
+    text: Teleport
+    font: cipsoftFont
+    color: #ffffff
+    width: 64
+
+  Button
+    id: closeButton
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    margin-bottom: -3
+    text: Close
+    font: cipsoftFont
+    color: #ffffff
+    width: 64
+    @onClick: modules.game_waypoints.hide()

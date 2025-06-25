@@ -1,0 +1,12 @@
+Module
+  name: game_waypoints
+  description: waypoints
+  author: Unknown Soldier
+  sandboxed: true
+  autoload: true
+  autoload-priority: 1000
+  dependencies: [ game_interface ]
+  scripts: [ waypoints ]
+  
+  @onLoad: init()
+  @onUnload: terminate()
